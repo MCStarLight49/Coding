@@ -32,7 +32,8 @@ git remote remove 변수이름
     (머지X) git branch -D {name}
 
 - github관련 -
--f : 강제
+push -f : 강제넣기
+pull/clone --allow-unrelated-histories : 강제가져오기
 (-u : url과 브랜치 기억 (git push/pull)) git push -u {url} {main_name}
 처음 가져올때 : git clone {url}
 그 이후 : git pull
