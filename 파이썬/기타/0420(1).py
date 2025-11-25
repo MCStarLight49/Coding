@@ -1,0 +1,10 @@
+print("전화번호를 입력해주세요")
+number = input("-> ")
+print(number, "감사합니다")
+
+print("")
+print("숫자를 입력해주세요")
+n = int(input("1번재 숫자 : "))
+m = int(input("2번재 숫자 : "))
+print(n, "+", m, "=", n+m)
+print(n, "x", m, "=", n*m)

@@ -1,0 +1,38 @@
+! 뭐 하기전에 git init 부터 !
+
+
+[ 폴더백업 ]
+코딩 : https://github.com/MCStarLight49/Coding.git
+
+
+[ 전체설정 : 파워셀 ]
+git config --global user.email "akzmwhgdk649@gmail.com"
+git config --global user.name "GreenGold649"
+git config --global diff.tool vscode
+git config --global difftoll.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
+
+
+[ 기본 명령어 ]
+git add . or 파일명
+git commit -m '내용'
+git difftool {id} {id}
+git log --oneline --all --graph
+git remote add 변수이름 변수값
+git remote remove 변수이름
+
+- 브랜치 -
+목록 : git branch
+생성 : git branch {name}
+전환 : git switch {name}
+합치기 (오류시 수정후 add->commit) git merge {name}
+       git switch {name} => (오류시 수정후 git rebase --continue) git rebase {main_name} => git switch {main_name} => git merge {name}
+       (오류시 수정후 add->commit) git merge {name} --squash
+       전부다 결과는 같은데 2,3번은 로그가 깔끔하게 나옴
+삭제 (머지) git branch -d {name}
+    (머지X) git branch -D {name}
+
+- github관련 -
+-f : 강제
+(-u : url과 브랜치 기억 (git push/pull)) git push -u {url} {main_name}
+처음 가져올때 : git clone {url}
+그 이후 : git pull
