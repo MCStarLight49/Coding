@@ -2,7 +2,7 @@
 
 
 [ 폴더백업 ]
-코딩 : https://github.com/MCStarLight49/Coding.git
+코딩 : git remote add coding https://github.com/MCStarLight49/Coding.git
 
 
 [ 전체설정 : 파워셀 ]
@@ -12,7 +12,7 @@ git config --global diff.tool vscode
 git config --global difftoll.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
 
 
-[ 기본 명령어 ]
+[ 명령어 ]
 git add . or 파일명
 git commit -m '내용'
 git difftool {id} {id}
@@ -36,3 +36,10 @@ git remote remove 변수이름
 (-u : url과 브랜치 기억 (git push/pull)) git push -u {url} {main_name}
 처음 가져올때 : git clone {url}
 그 이후 : git pull
+
+- 로그초기화 -
+git checkout --orphan tmp
+git add .
+git commit -m 'ok'
+git branch -D main
+git branch -m main
