@@ -1,0 +1,7 @@
+* {margin: 0;padding: 0;}
+#main {width:980px;margin:0 auto;}
+.clear {clear:both;}
+a {
+    text-decoration: none;
+    color: black;
+}

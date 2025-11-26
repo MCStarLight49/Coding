@@ -1,0 +1,34 @@
+header {
+    width: 100%;height: 160px;
+    background-color: pink;
+}
+header #banner_nav a:hover {
+    color:#abffab;
+    text-shadow: 1px 1px 3px black;
+}
+/* 배너 타이틀 */
+header #banner_title {
+    width:250px;height: auto; margin: 0 auto;
+    padding: 30px 0; text-align: center;
+    font-size: 45px;font-weight: bold;
+}
+/* 배너 메뉴 */
+header #banner_nav {
+    height: 70px;
+}
+header #banner_nav li {
+    list-style: none;
+    float: left;
+    font-weight: bold;font-size: 20px;
+}
+header #banner_nav #nav_left {
+    float: left; padding: 0 0 10px 15px;
+}
+header #banner_nav #nav_right {
+    float: right; padding: 0 15px 10px 0;
+}
+
+/* width:580px 이하 */
+@media screen and (max-width:580px) {
+    header #nav_left .normal {display: none;}
+}

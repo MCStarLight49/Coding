@@ -53,8 +53,8 @@ bt1 = Button(win, padx=0, pady=0, width=5, height=2, text="버튼1", fg="#abffab
 bt1.pack() # 표시
 bt1.place(x=400, y=300) # 버튼 위치
 
-ph = PhotoImage(file="D:\gui 테스트\이미지 1.png")
-ph2 = PhotoImage(file="D:\gui 테스트\이미지 2.png")
+ph = PhotoImage(file="D:\gui 테스트\wow1.png")
+ph2 = PhotoImage(file="D:\gui 테스트\wow2.png")
 
 bt2 = Button(win, image=ph) # 그림적용 (width,height가 픽셀수로 작동)
 bt2.pack()

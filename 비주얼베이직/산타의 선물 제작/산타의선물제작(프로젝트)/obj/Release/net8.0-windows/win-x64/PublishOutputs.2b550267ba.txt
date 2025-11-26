@@ -1,0 +1,9 @@
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\santa_game.pdb
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\D3DCompiler_47_cor3.dll
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\PenImc_cor3.dll
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\PresentationNative_cor3.dll
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\vcruntime140_cor3.dll
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\wpfgfx_cor3.dll
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\sni.dll
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\SQLite.Interop.dll
+C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)\bin\Release\net8.0-windows\win-x64\publish\santa_game.exe

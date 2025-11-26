@@ -1,0 +1,12 @@
+[0번]
+bin -> Release -> net8.0-windows -> win-x64 -> publish 삭제
+
+[1번 cmd창]
+cd C:\Users\USER\Desktop\기타\코딩\비주얼베이직\산타의 선물 제작\산타의선물제작(프로젝트)
+dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
+
+[2번 출력결과]
+bin -> Release -> net8.0-windows -> win-x64 -> publish
+
+[3번]
+추가파일을 넣기
