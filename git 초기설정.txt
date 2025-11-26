@@ -37,7 +37,7 @@ push -f : 강제넣기
 pull/clone --allow-unrelated-histories : 강제가져오기
 git push -u {url} {main_name}
 그냥 가져오기(폴더생김) : git clone {url}
-현재 폴더에 적용 : git pull
+현재 폴더에 적용 : git pull {url} {main_name}
 
 - 로그초기화 -
 git checkout --orphan tmp
