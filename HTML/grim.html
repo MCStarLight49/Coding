@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그림판</title>
+    <style>
+        #vh_dummy {
+            z-index: -1;
+            width: 100px;
+            height: 100vh;
+            position: fixed;
+        }
+        body {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction:column;
+        }
+        
+        /* 캔버스 */
+        #canv {
+            flex:1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin-top: 100px;
+        }
+        canvas { background-color: white; }
+
+        /* 메뉴창 */
+        header {
+            height: 100px;
+            width: 100vw;
+            background-color: lightgrey;
+            margin: 0;
+            top:0;
+            left: 0;
+            position: fixed;
+        }
+        header div {
+            text-align: center;
+            margin: 0;
+            line-height: 100px;
+            height: 100px;
+        }
+        #pen_set { /* 팬옵션 */
+            float: left;
+            margin-left: 20px;
+        }
+        #c_size { /* 크기조절 */
+            float: right;
+            margin-right: 20px;
+        }
+        input {
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            vertical-align: middle;
+        }
+        input[type="button"] {height: 44px; font-size: 18px;}
+        input[type="number"] { width: 50px; height: 36px;}
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button
+        { -webkit-appearance: none; }
+        
+    </style>
+</head>
+<body>
+    <div id="vh_dummy"></div>
+    <!-- -------------------------------------------------------------------------- -->
+    <header>
+        <div id="pen_set">
+            <input type="color" name="st_color" value="#000000">
+            <input type="number" name="num_st_w" min="1" max="100" value="1">
+            <input type="range" name="range_st_w" min="1" max="100" step="1" value="1">
+        </div>
+        <div id="c_size">
+            <input type="number" name="w" value="500">
+            &nbsp;X&nbsp;
+            <input type="number" name="h" value="500">
+            &nbsp;&nbsp;
+            <input type="button" name="wh_ok" value="크기 적용">
+        </div>
+    </header>
+    <div id="canv"><canvas></canvas></div>
+    <!-- -------------------------------------------------------------------------- -->
+    <script>
+        
+        // 변수 -----------------------------------
+        let x, y, tri_draw = false; // 마우스좌표, 클릭유무
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext("2d");
+        const st_color = document.querySelector("input[name=st_color]"); // 선 색깔
+        const num_st_w = document.querySelector("input[name=num_st_w]"); // 선 굵기1
+        const range_st_w = document.querySelector("input[name=range_st_w]"); // 선 굵기2
+        const num_w = document.querySelector("input[name=w]"); // 캔버스 가로
+        const num_h = document.querySelector("input[name=h]"); // 캔버스 세로
+        const btn_wh = document.querySelector("input[name=wh_ok]"); // 캔버스 크기버튼
+        const body = document.querySelector("body");
+        const vh = document.getElementById("vh_dummy"); // 현재 창크기 100vh 길이
+        
+        // 함수 -----------------------------------
+        function body_h() { // 높이 가운데정렬
+            // 스크롤높이
+            const a = document.createElement("div");
+            a.style.overflow = "scroll";
+            a.style.width = "100px";
+            a.style.height = "100px";
+            body.appendChild(a);
+            let sc_h = a.offsetHeight - a.clientHeight;
+            body.removeChild(a);
+            
+            // 정렬
+            body.style.height = (canvas.height+140) + "px";
+            body.style.minHeight = (vh.offsetHeight-sc_h) + "px";
+        }
+
+        // 초기값 설정 -----------------------------------
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "black";
+        canvas.width = num_w.value;
+        canvas.height = num_h.value;
+        // 정렬
+        body_h();
+        addEventListener("resize", body_h);
+        
+        // 메뉴창 -----------------------------------
+        // 선 색깔
+        st_color.addEventListener("change", ()=>{ ctx.strokeStyle = st_color.value; });
+        // 선 굵기1
+        num_st_w.addEventListener("change", ()=>{ 
+            if (1 > num_st_w.value || num_st_w.value > 100) num_st_w.value = ctx.lineWidth;
+            else { 
+                ctx.lineWidth = num_st_w.value;
+                range_st_w.value = num_st_w.value;
+            }
+        });
+        // 선 굵기2
+        range_st_w.addEventListener("input", ()=>{ 
+            ctx.lineWidth = range_st_w.value;
+            num_st_w.value = range_st_w.value;
+        });
+        // 크기조절
+        btn_wh.addEventListener("click", ()=>{
+            if (num_h.value >= 1 && num_w.value >= 1 && num_h.value <= 8000 && num_w.value <= 8000) {
+                let draw_save = ctx.getImageData(0, 0, canvas.width, canvas.height); // 저장 (x1, y1, x2, y2)
+                canvas.width = num_w.value;
+                canvas.height = num_h.value;
+                ctx.lineWidth = num_st_w.value;
+                ctx.strokeStyle = st_color.value;
+                body_h(); // 정렬
+                ctx.putImageData(draw_save, 0, 0); // 불러오기 (변수, x1, y1)
+            } else {
+                num_h.value = canvas.height;
+                num_w.value = canvas.width;
+            }
+        });
+
+        // 캔버스 -----------------------------------
+        // 마우스 클릭
+        canvas.addEventListener("mousedown", function(event) {
+            x = event.offsetX;
+            y = event.offsetY;
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            tri_draw = true;
+        });
+        // 마우스 이동
+        canvas.addEventListener("mousemove", function(event) {
+            if (tri_draw) {
+                x = event.offsetX;
+                y = event.offsetY;
+                ctx.lineTo(x,y);
+                ctx.stroke();
+            }
+        });
+        // 마우스 클릭해제
+        canvas.addEventListener("mouseup", ()=>{ tri_draw = false });
+        canvas.addEventListener("mouseout", ()=>{ tri_draw = false })
+        
+    </script>
+</body>
+</html>

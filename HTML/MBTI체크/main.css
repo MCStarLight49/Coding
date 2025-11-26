@@ -1,0 +1,39 @@
+main { 
+    width: 80%;
+    padding: 20px 20px;
+    margin: 50px auto;
+    border: 3px solid black;
+    font-size: 20px;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    font-weight: bold;
+    color: dimgrey;
+}
+.qu {
+    color: black;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.Qset {
+    margin: 70px auto;
+}
+hr {
+    border: 2px dashed black;
+    margin: 50px 0;
+}
+table {margin: 0 auto; width: 100%;}
+th {padding: 10px 10px;}
+h2 {
+    color: blue;
+    text-shadow: 0 0 5px aqua;
+}
+
+.wow {
+    color: green;
+    animation: glowPulse 4s infinite;
+}
+@keyframes glowPulse {
+    0%, 100% {text-shadow: 0 0 10px greenyellow}
+    50% {text-shadow: 0 0 20px greenyellow}
+  }

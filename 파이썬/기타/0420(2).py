@@ -1,0 +1,32 @@
+import turtle
+t = turtle.Turtle()
+t.shape("turtle")
+s = int(input("집 크기를 입력해주세요 : "))
+uc = input("집 지붕색을 입력해주세요 : ")
+dc = input("집의 전체적인색을 입력해주세요 : ")
+
+t.up()
+t.goto(-(s/2), -(s/2))
+t.down()
+
+t.width(5)
+t.color(dc)
+t.forward(s)
+t.left(90)
+t.forward(s)
+t.left(90)
+t.forward(s)
+t.left(90)
+t.forward(s)
+
+t.up()
+t.goto(-(s/2), s/2)
+t.down()
+
+t.color(uc)
+t.left(150)
+t.forward(s)
+t.right(120)
+t.forward(s)
+t.right(120)
+t.forward(s)

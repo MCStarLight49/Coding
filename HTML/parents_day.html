@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>어버이날</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fff0f0;
+    }
+    header {
+        width: 100%;
+        height: 10vh;
+        text-align: center;
+        line-height: 10vh;
+        font-weight: bold;
+        font-size: 4vh;
+        background-color: #ffccdd;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    /*카네이션*/
+    .drop {
+        position: absolute;
+        pointer-events: none;
+        animation: fall linear infinite;
+        z-index: -1;
+        font-weight: bold;
+        font-size: 50px;
+        text-shadow: black 0 0 20px;
+        color: #ffccdd;
+        
+    }
+    @keyframes fall {
+        0% {
+            transform: translateY(-10vh) rotate(0deg); /*y좌표 회전각도*/
+            opacity: 1; /*투명도*/
+        }
+        100% {
+            transform: translateY(105vh) rotate(360deg);
+            opacity: 0.5;
+        }
+    }
+  </style>
+</head>
+<body>
+    <header>카네이션 : 0</header>
+<script>
+  const imageURL = "https://cdn-icons-png.flaticon.com/512/15618/15618360.png";
+  const head = document.querySelector("header");
+  const txt_list = ["부모님", "아빠", "엄마", "사랑", "헌신", "감사", "효도", "축하", "돌봄", "아버지", "어머니", "존경", "배려"];
+  let c_count = 0;
+
+  function createDrop() {
+    // 생성
+    let drop, size;
+    if (Math.floor(Math.random()*100) > 29) {
+      drop = document.createElement("img");
+      drop.src = imageURL;
+      size = 100;
+    } else {
+      drop = document.createElement("div");
+      drop.innerText = txt_list[Math.floor(Math.random()*txt_list.length)];
+      size = 200;
+    }
+    drop.className = "drop";
+
+    // 크기
+    drop.style.width = `${size}px`;
+    drop.style.height = `${size}px`;
+    
+    // 위치
+    const tmp_pos = Math.random() * window.innerWidth+20;
+    let pos = (tmp_pos >= window.innerWidth-size-40) ? tmp_pos-size-40 : tmp_pos;
+    drop.style.left = `${pos}px`;
+
+    // 시간
+    const duration = Math.random() * 5 + 10;
+    drop.style.animationDuration = `${duration}s`;
+
+    // 생성된것 추가
+    document.body.appendChild(drop);
+
+    // 삭제
+    setTimeout(() => {
+      drop.remove();
+      if (drop.innerText == "") c_count++;
+      head.innerHTML = `카네이션 : ${c_count}`;
+    }, duration * 1000);
+  }
+
+  // 이미지 생성 주기
+  setInterval(createDrop, Math.floor(Math.random()*50)+350);
+</script>
+
+</body>
+</html>
